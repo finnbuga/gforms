@@ -1,11 +1,14 @@
 import React from "react";
-import Header from "./components/Header";
+
 import "./App.css";
+import Header from "./components/Header";
+import ShareholderDetailsPage from "./components/ShareholderDetailsPage";
 
 function App() {
   return (
     <div id="app">
       <Header />
+      <ShareholderDetailsPage />
     </div>
   );
 }
