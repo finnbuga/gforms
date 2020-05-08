@@ -6,3 +6,8 @@ body {
   max-width: 800px;
   margin: 0 auto;
 }
+
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
