@@ -56,13 +56,31 @@ const useSteps = (steps) => {
 
 const EditShareholders = ({ shareholders }) => (
   <>
+    <div className="info">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <p>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum.
+      </p>
+    </div>
     {shareholders.map((shareholder) => (
       <ShareholderForm key={shareholder.id} shareholder={shareholder} />
     ))}
   </>
 );
 
-const EditShares = () => <div>DivideShares</div>;
+const EditShares = () => (
+  <div className="info">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </div>
+);
 
 const NavButtons = ({ goBack, goToNext }) => (
   <nav className="nav-buttons">
