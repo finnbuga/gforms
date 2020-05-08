@@ -1,9 +1,30 @@
 import React, { useState } from "react";
 
+import ShareholderForm from "../ShareholderForm";
+
+const shareholders = [
+  {
+    id: 1,
+    firstName: "John",
+    lastName: "Doe",
+    email: "john@getground.com",
+    share: 80,
+    isDirector: false,
+  },
+  {
+    id: 2,
+    firstName: "Florin",
+    lastName: "Buga",
+    email: "florin@getground.co.uk",
+    share: 20,
+    isDirector: true,
+  },
+];
+
 const ShareholderDetailsPage = () => {
   const { currentStep, goBack, goToNext } = useSteps([
-    <AddShareholder />,
-    <DivideShares />,
+    <EditShareholders shareholders={shareholders} />,
+    <EditShares shareholders={shareholders} />,
   ]);
 
   return (
@@ -33,9 +54,15 @@ const useSteps = (steps) => {
   return { currentStep: steps[step], goBack, goToNext };
 };
 
-const AddShareholder = () => <div>AddShareholder</div>;
+const EditShareholders = ({ shareholders }) => (
+  <>
+    {shareholders.map((shareholder) => (
+      <ShareholderForm key={shareholder.id} shareholder={shareholder} />
+    ))}
+  </>
+);
 
-const DivideShares = () => <div>DivideShares</div>;
+const EditShares = () => <div>DivideShares</div>;
 
 const NavButtons = ({ goBack, goToNext }) => (
   <nav className="nav-buttons">
