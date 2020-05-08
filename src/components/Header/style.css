@@ -1,0 +1,27 @@
+#app-header {
+  padding: 1.6rem 0;
+  background-color: cadetblue;
+}
+
+#app-header-inner {
+  display: flex;
+}
+
+#main-nav ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+#main-nav li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+#app-header a {
+  color: white;
+  text-decoration: none;
+}
+
+#save-button {
+  margin-left: auto;
+}
