@@ -2,6 +2,10 @@ body {
   color: rgb(56, 91, 92);
 }
 
+h1 {
+  margin-top: 3rem;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -10,4 +14,13 @@ body {
 .nav-buttons {
   display: flex;
   justify-content: flex-end;
+}
+
+.info {
+  background-color: honeydew;
+  padding: 1rem;
+}
+
+.error {
+  color: red;
 }
