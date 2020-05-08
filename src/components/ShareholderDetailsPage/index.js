@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 
 const ShareholderDetailsPage = () => {
-  const steps = [<AddShareholder />, <DivideShares />];
+  const { currentStep, goBack, goToNext } = useSteps([
+    <AddShareholder />,
+    <DivideShares />,
+  ]);
 
+  return (
+    <main class="container">
+      <h1>Shareholder Details</h1>
+      {currentStep}
+      <NavButtons {...{ goBack, goToNext }} />
+    </main>
+  );
+};
+
+const useSteps = (steps) => {
   const [step, setStep] = useState(0);
 
   const goBack = () => {
@@ -17,13 +30,7 @@ const ShareholderDetailsPage = () => {
     }
   };
 
-  return (
-    <main class="container">
-      <h1>Shareholder Details</h1>
-      {steps[step]}
-      <NavButtons {...{ goBack, goToNext }} />
-    </main>
-  );
+  return { currentStep: steps[step], goBack, goToNext };
 };
 
 const AddShareholder = () => <div>AddShareholder</div>;
