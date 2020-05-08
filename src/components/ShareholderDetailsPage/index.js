@@ -7,7 +7,7 @@ const ShareholderDetailsPage = () => {
   ]);
 
   return (
-    <main class="container">
+    <main className="container">
       <h1>Shareholder Details</h1>
       {currentStep}
       <NavButtons {...{ goBack, goToNext }} />
