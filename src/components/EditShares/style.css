@@ -1,0 +1,18 @@
+.shares-row {
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.shares-row .first {
+  margin-right: auto;
+}
+
+.shares-row .box {
+  flex-basis: 100px;
+  text-align: center;
+}
+
+.shares-row h3 {
+  margin: 0;
+}
