@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import ShareholderForm from "../ShareholderForm";
+import EditShareholders from "../EditShareholders";
 
 const shareholders = [
   {
@@ -53,25 +53,6 @@ const useSteps = (steps) => {
 
   return { currentStep: steps[step], goBack, goToNext };
 };
-
-const EditShareholders = ({ shareholders }) => (
-  <>
-    <div className="info">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <p>
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum.
-      </p>
-    </div>
-    {shareholders.map((shareholder) => (
-      <ShareholderForm key={shareholder.id} shareholder={shareholder} />
-    ))}
-  </>
-);
 
 const EditShares = () => (
   <div className="info">
