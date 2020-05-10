@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import EditShareholders from "../EditShareholders";
+import EditShares from "../EditShares";
 
 const ShareholderDetailsPage = () => {
   const { currentStep, goBack, goToNext } = useSteps([
@@ -34,15 +35,6 @@ const useSteps = (steps) => {
 
   return { currentStep: steps[step], goBack, goToNext };
 };
-
-const EditShares = () => (
-  <div className="info">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-  </div>
-);
 
 const NavButtons = ({ goBack, goToNext }) => (
   <nav className="nav-buttons">
