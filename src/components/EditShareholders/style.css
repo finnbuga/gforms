@@ -1,13 +1,13 @@
-#shareholder-form {
+.shareholder-form {
   display: flex;
   flex-wrap: wrap;
 }
 
-#shareholder-form > * {
+.shareholder-form > * {
   flex: 50%;
   margin: 1rem 0;
 }
 
-#shareholder-form input {
+.shareholder-form input {
   display: block;
 }

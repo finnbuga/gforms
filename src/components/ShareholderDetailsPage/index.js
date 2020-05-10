@@ -2,29 +2,10 @@ import React, { useState } from "react";
 
 import EditShareholders from "../EditShareholders";
 
-const shareholders = [
-  {
-    id: 1,
-    firstName: "John",
-    lastName: "Doe",
-    email: "john@getground.com",
-    share: 80,
-    isDirector: false,
-  },
-  {
-    id: 2,
-    firstName: "Florin",
-    lastName: "Buga",
-    email: "florin@getground.co.uk",
-    share: 20,
-    isDirector: true,
-  },
-];
-
 const ShareholderDetailsPage = () => {
   const { currentStep, goBack, goToNext } = useSteps([
-    <EditShareholders shareholders={shareholders} />,
-    <EditShares shareholders={shareholders} />,
+    <EditShareholders />,
+    <EditShares />,
   ]);
 
   return (
@@ -37,7 +18,7 @@ const ShareholderDetailsPage = () => {
 };
 
 const useSteps = (steps) => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
 
   const goBack = () => {
     if (step > 0) {

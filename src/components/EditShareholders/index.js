@@ -1,33 +1,13 @@
 import React from "react";
 import { useForm, ErrorMessage } from "react-hook-form";
 import { string, object, array } from "yup";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./style.css";
 
-const ErrorMsg = (props) => (
-  <ErrorMessage as="div" className="error" {...props} />
-);
-
-const validationSchema = object().shape({
-  shareholders: array().of(
-    object().shape({
-      firstName: string().label("First name").required(),
-      lastName: string().label("Last name").required(),
-      email: string().label("First name").email().required(),
-    })
-  ),
-});
-
-const EditShareholders = ({ shareholders }) => {
-  const { handleSubmit, register, errors } = useForm({
-    validationSchema,
-    defaultValues: { shareholders },
-  });
-
-  const onSubmit = (values) => console.log("values", values);
-
+const EditShareholders = () => {
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <>
       <div className="info">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -39,10 +19,31 @@ const EditShareholders = ({ shareholders }) => {
           reprehenderit in voluptate velit esse cillum.
         </p>
       </div>
+
+      <EditShareholdersForm />
+    </>
+  );
+};
+
+const EditShareholdersForm = () => {
+  const shareholders = useSelector((state) => state.shareholders);
+  const dispatch = useDispatch();
+
+  const onSubmit = ({ shareholders }) =>
+    dispatch({ type: "UPDATE", load: { shareholders } });
+
+  const { handleSubmit, register, errors } = useForm({
+    validationSchema,
+    defaultValues: { shareholders },
+  });
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
       {shareholders.map((shareholder, i) => (
         <div key={i}>
           <h2>Add a Shareholder</h2>
-          <div id="shareholder-form">
+
+          <div className="shareholder-form">
             <div>
               <label>Shareholder first name</label>
               <input name={`shareholders[${i}].firstName`} ref={register} />
@@ -76,5 +77,19 @@ const EditShareholders = ({ shareholders }) => {
     </form>
   );
 };
+
+const ErrorMsg = (props) => (
+  <ErrorMessage as="div" className="error" {...props} />
+);
+
+const validationSchema = object().shape({
+  shareholders: array().of(
+    object().shape({
+      firstName: string().label("First name").required(),
+      lastName: string().label("Last name").required(),
+      email: string().label("Email").email().required(),
+    })
+  ),
+});
 
 export default EditShareholders;
