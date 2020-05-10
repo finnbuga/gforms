@@ -19,7 +19,7 @@ const ShareholderDetailsPage = () => {
 };
 
 const useSteps = (steps) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
 
   const goBack = () => {
     if (step > 0) {

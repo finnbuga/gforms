@@ -1,9 +1,7 @@
 import React from "react";
-import { useForm, ErrorMessage } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
-import { object, array, bool, number } from "yup";
 
 import "./style.css";
+import useShareholders from "../useShareholders";
 
 const EditShares = () => (
   <>
@@ -19,19 +17,10 @@ const EditShares = () => (
 );
 
 const EditSharesForm = () => {
-  const shareholders = useSelector((state) => state.shareholders);
-  const dispatch = useDispatch();
-
-  const onSubmit = ({ shareholders }) =>
-    dispatch({ type: "UPDATE", load: { shareholders } });
-
-  const { handleSubmit, register, errors } = useForm({
-    validationSchema,
-    defaultValues: { shareholders },
-  });
+  const { shareholders, handleSubmit, register, ErrorMsg } = useShareholders();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit}>
       <div className="shares-row">
         <div className="first">Shareholders</div>
         <div className="box">Shares %</div>
@@ -48,23 +37,23 @@ const EditSharesForm = () => {
 
             <div className="box">
               <input
+                ref={register}
                 type="number"
                 name={`shareholders[${i}].share`}
-                ref={register}
               />
             </div>
 
             <div className="box">
               <input
+                ref={register}
                 type="checkbox"
                 name={`shareholders[${i}].isDirector`}
-                ref={register}
               />
             </div>
           </div>
 
-          <ErrorMsg errors={errors} name={`shareholders[${i}].isDirector`} />
-          <ErrorMsg errors={errors} name={`shareholders[${i}].share`} />
+          <ErrorMsg name={`shareholders[${i}].share`} />
+          <ErrorMsg name={`shareholders[${i}].isDirector`} />
         </div>
       ))}
 
@@ -72,18 +61,5 @@ const EditSharesForm = () => {
     </form>
   );
 };
-
-const ErrorMsg = (props) => (
-  <ErrorMessage as="div" className="error" {...props} />
-);
-
-const validationSchema = object().shape({
-  shareholders: array().of(
-    object().shape({
-      share: number().label("Shares").min(0).max(100).required(),
-      isDirector: bool().label("Director"),
-    })
-  ),
-});
 
 export default EditShares;
