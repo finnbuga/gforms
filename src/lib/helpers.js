@@ -6,10 +6,10 @@
  *
  * Finding the min difference could be done by taking every element
  * of array 1 and diffing it with every element of array 2.
- * However this would take O(n*m), where n and m are the array sizes.
+ * However this would take O(n*m) time, where n and m are the array sizes.
  *
- * We can do better: sort the arrays in O(log n) time, then search for the min
- * in O(n) time.
+ * We can do better: sort the arrays in O(n*log n) time, then search for the
+ * min difference in O(n+m) time.
  * This can be further improved using hash sets for special cases;
  */
 const getMinMaxDiff = (a1, a2) => {
